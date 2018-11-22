@@ -4,6 +4,16 @@ Source code for machine learning tutorials and examples used in [Arm's ML develo
 
 ## Projects and tutorials
 
+### Update with Pi Zero W
+Raspbian Stretch already supports Tensorflow 1.9 as of December 2018. However installing could be a challange. So follow below tips to install tensorflow on Pi Zero W running Raspbian Stretch
+sudo pip3 install --no-cache-dir tensorflow
+sudo apt install libatlas-base-dev
+You can use python 2.7 (running python ) for commands like record (python record ..) but for running trained model use python3
+Below 3 commands will save you from hassle of running python3 train.py
+sudo apt-get install libhdf5
+sudo apt-get install libhdf5-dev
+sudo pip3 install h5py
+
 ### Arm NN MNIST
 Deploy a TensorFlow MNIST model with the Arm NN inference engine.
 
