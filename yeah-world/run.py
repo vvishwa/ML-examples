@@ -65,8 +65,12 @@ Use MODEL to classify camera frames and play sounds when class 0 is recognised."
     smoothed /= len(smoothed)
 
     print('Now running!')
-    while True:
-        raw_frame = camera.next_frame()
+    #while True:
+    for stream_frame in camera.stream:
+        stream_frame.truncate()
+        stream_frame.seek(0)
+        raw_frame = stream_frame.array
+        #raw_frame = camera.next_frame()
 
         # Use MobileNet to get the features for this frame
         z = extractor.features(raw_frame)

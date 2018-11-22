@@ -16,7 +16,9 @@ then trains a very simple Keras classifier on those features.
 """
 
 from sys import argv, exit, stdout
-from cPickle import load
+#from cPickle import load
+from pickle import load
+import pickle
 from tensorflow import keras
 from pinet import PiNet
 import numpy as np
@@ -50,7 +52,8 @@ two or more RECORDING_FILES (see record.py to create these).""")
         stdout.write(' %s' % filename)
         stdout.flush()
         with open(filename, 'rb') as f:
-            x = load(f)
+            x = load(f, encoding='iso-8859-1')
+            #x = pickle._Unpickler(f).load()
             features = [feature_extractor.features(f) for f in x]
             label = np.zeros((len(recording_files),))
             label[i] = 1.          # Make a label with a 1 in the column for the file for this frame
