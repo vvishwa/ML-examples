@@ -18,7 +18,7 @@ Below 3 commands will save you from hassle of running python3 train.py
 
 sudo apt-get install libhdf5 \
 sudo apt-get install libhdf5-dev \
-sudo pip3 install h5py \
+sudo pip3 install h5py 
 
 ### Arm NN MNIST
 Deploy a TensorFlow MNIST model with the Arm NN inference engine.
