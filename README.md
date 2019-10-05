@@ -10,13 +10,15 @@ Raspbian Stretch already supports Tensorflow 1.9 as of December 2018. However in
 sudo pip3 install --no-cache-dir tensorflow \# --no-cache-dir will fix OutOfMemory problem
 sudo apt install libatlas-base-dev
 
+If you ever get issue related to sh1 checksum, pay attention to what url being used for downloading and change command to
+"sudo pip install <.whl file>"
 
 You can use python 2.7 (running python ) for commands like record (python record ..) but for running trained model use python3
 Below 3 commands will save you from hassle of running python3 train.py
 
-sudo apt-get install libhdf5
-sudo apt-get install libhdf5-dev
-sudo pip3 install h5py
+sudo apt-get install libhdf5 \
+sudo apt-get install libhdf5-dev \
+sudo pip3 install h5py \
 
 ### Arm NN MNIST
 Deploy a TensorFlow MNIST model with the Arm NN inference engine.
