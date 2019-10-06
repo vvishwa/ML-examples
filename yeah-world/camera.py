@@ -60,3 +60,16 @@ class Camera:
 
         frame = self.stream.next().array
         return frame
+
+    def stream(self):
+        """ Capture a frame from the camera. By truncating the frame buffer we
+        exchange FPS for lower latency. When responding to gestures latency is
+        more important to the user experience. """
+        self.capture.truncate(0)
+        if self.training_mode:
+            self.camera.iso = choice([100, 200, 320, 400, 500, 640, 800])
+            awb_r = max(0., uniform(-.5, .5) + self.base_awb[0])
+            awb_b = max(0., uniform(-.5, .5) + self.base_awb[1])
+            self.camera.awb_gains = (awb_r, awb_b)
+
+        return self.stream
